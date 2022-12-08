@@ -31,7 +31,7 @@ const reviews = [
 ];
 
 // select items
-const img = document.getElementById("person-img");
+let img = document.getElementById("person-img");
 const author = document.getElementById("author");
 const job = document.getElementById("job");
 const info = document.getElementById("info");
@@ -45,5 +45,45 @@ let currentItem = 0;
 
 //load initial item
 window.addEventListener("DOMContentLoaded", function () {
-  console.log("shake and bake");
+  showPerson();
 });
+
+//show person based on item
+function showPerson() {
+  const item = reviews[currentItem];
+  // @ts-ignore
+  /* NOT WORKING */
+  /*   img.src = item.img;
+  author?.textContent = item.name; 
+  job?.textContent = item.job
+  info?.textContent = item.text;  */
+}
+
+//show  next person
+
+nextBtn?.addEventListener("click", function () {
+  currentItem++;
+  if (currentItem > reviews.length - 1) {
+    currentItem = 0;
+  }
+  showPerson();
+});
+
+//show prev person
+prevBtn?.addEventListener("click", function () {
+  currentItem--;
+  if (currentItem < 0) {
+    currentItem = reviews.length - 1;
+  }
+  showPerson();
+});
+
+randomBtn?.addEventListener("click", function () {
+  currentItem = Math.floor(Math.random() * reviews.length);
+  showPerson();
+});
+
+/* Array 
+reviews
+0 - 5
+reviews[] */
